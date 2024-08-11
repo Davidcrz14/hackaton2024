@@ -1,16 +1,25 @@
 import { motion } from 'framer-motion';
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
-import { FaCog, FaHome, FaUser } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaCog, FaHome } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom'; // Importa el hook useLocation
 
 const Header = () => {
+  const location = useLocation(); // Obtén la ubicación actual
   const [activeLink, setActiveLink] = useState('home');
 
+  // Oculta el enlace de Hackathons
   const links = [
-    { id: 'home', icon: FaHome, text: 'Inicio' },
-    { id: 'about', icon: FaUser, text: 'Hackatón' },
-    { id: 'settings', icon: FaCog, text: 'Más Información' }
+    { id: 'home', icon: FaHome, text: 'Inicio', to: '/' },
+    // { id: 'hackathons', icon: FaUser, text: 'Hackathons', to: '/hackathons' }, // Comentado para ocultar
+    { id: 'info', icon: FaCog, text: 'Más Información', to: '/info' }
   ];
+
+  useEffect(() => {
+    // Actualiza el estado activeLink basado en la ubicación actual
+    const path = location.pathname;
+    const active = links.find(link => link.to === path)?.id || 'home';
+    setActiveLink(active);
+  }, [location.pathname, links]);
 
   return (
     <header className="bg-gray-900 text-white p-4 fixed top-0 left-0 right-0 z-50 shadow-lg">
@@ -26,12 +35,13 @@ const Header = () => {
         <nav aria-label="Navegación principal">
           <ul className="flex space-x-6">
             {links.map((link) => (
-              <motion.li key={link.id}
+              <motion.li
+                key={link.id}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a
-                  href={`#${link.id}`}
+                <Link
+                  to={link.to}
                   className={`flex items-center transition-colors duration-300 ${
                     activeLink === link.id ? 'text-purple-400' : 'text-gray-300 hover:text-pink-400'
                   }`}
@@ -39,7 +49,7 @@ const Header = () => {
                 >
                   <link.icon className="mr-2" />
                   {link.text}
-                </a>
+                </Link>
               </motion.li>
             ))}
           </ul>
@@ -56,4 +66,3 @@ const Header = () => {
 };
 
 export default Header;
-
