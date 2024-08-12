@@ -3,8 +3,8 @@ import './App.css';
 import MainContent from './components/body';
 import Footer from './components/footer';
 import Header from './components/header';
-import Hackathons from './pages/Hackathons'; // Importa el componente Hackathons
-import InfoCard from './pages/InfoCard'; // Importa la subpágina InfoCard
+import Hackathons from './pages/Hackathons';
+import InfoCard from './pages/InfoCard'; 
 
 const App = () => {
   return (
