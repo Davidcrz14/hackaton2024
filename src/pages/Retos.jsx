@@ -46,10 +46,10 @@ const Retos = () => {
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-          Retos del Hackathon
+          Forma de Trabajar
         </h1>
         <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto">
-          Explora los desafíos que te esperan en este evento.
+          Lee para estar más informado
         </p>
       </motion.section>
 
