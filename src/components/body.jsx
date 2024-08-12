@@ -8,10 +8,10 @@ const MainContent = () => {
       {/* Sección de bienvenida */}
       <section className="text-center mb-8 sm:mb-16">
         <Fade cascade damping={0.2}>
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4 text-gradient bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-gradient bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
             Tech for a Better Tomorrow
           </h1>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">
             Únete a nosotros para una emocionante jornada de innovación y creatividad.
           </p>
         </Fade>
@@ -24,7 +24,7 @@ const MainContent = () => {
             <img
               src={imagen}
               alt="Hackatón"
-              className="w-full max-w-3xl h-auto rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300"
+              className="w-full max-w-2xl h-auto rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300"
             />
           </div>
         </Fade>
@@ -33,10 +33,10 @@ const MainContent = () => {
       {/* Sección de información */}
       <section className="mb-8 sm:mb-16">
         <Fade>
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 sm:mb-8 text-center text-gradient bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center text-gradient bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
             Información del Evento
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Zoom cascade damping={0.1}>
               {[
                 { icon: Calendar, text: 'Fecha', detail: '17 de Agosto de 2024' },
@@ -44,9 +44,9 @@ const MainContent = () => {
                 { icon: UserPlus, text: 'Forma de Inscripción', detail: 'Inscríbete con tu Equipo de hasta 2 Usuarios' }
               ].map((item, index) => (
                 <div key={index} className="bg-gray-800 p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex flex-col justify-between h-full">
-                  <div className="mb-4">
-                    <item.icon className="w-12 h-12 text-blue-400" />
-                    <h3 className="text-xl sm:text-2xl font-bold mt-4 mb-2 text-gradient bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                  <div>
+                    <item.icon className="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 mb-4" />
+                    <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gradient bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
                       {item.text}
                     </h3>
                   </div>
@@ -59,26 +59,17 @@ const MainContent = () => {
       </section>
 
       {/* Sección de llamada a la acción */}
-      <section className="text-center mb-8 sm:mb-16">
+      <section className="text-center">
         <Fade>
-          <div className="mx-auto w-[500px] bg-gray-950 rounded-xl overflow-hidden drop-shadow-xl">
-            <div className="bg-[#333] flex items-center p-[5px] text-white relative">
-              <div className="flex absolute left-3">
-                <span className="h-3.5 w-3.5 bg-[#ff605c] rounded-xl mr-2"></span>
-                <span className="h-3.5 w-3.5 bg-[#ffbd44] rounded-xl mr-2"></span>
-                <span className="h-3.5 w-3.5 bg-[#00ca4e] rounded-xl"></span>
-              </div>
-              <div className="flex-1 text-center text-white">Registro</div>
-            </div>
-            <div className="p-2.5 text-[#0f0]">
-              <div>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdtcoEZco0Jvigs9qnIFttLdPHoea5FnO5g9cKHp5VRvtbvEw/viewform"><span className="mr-2">¡CLICK PARA REGISTRARTE!</span></a>
-                <span className="animate-[ping_1.5s_0.5s_ease-in-out_infinite]">.</span>
-                <span className="animate-[ping_1.5s_0.7s_ease-in-out_infinite]">.</span>
-                <span className="animate-[ping_1.5s_0.9s_ease-in-out_infinite]">.</span>
-              </div>
-            </div>
-          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-gradient bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent">
+            ¡No te lo pierdas!
+          </h2>
+          <a
+            href="https://forms.gle/WR714wRzQLQWvx36A"
+            className="bg-blue-950 text-white text-lg sm:text-xl font-semibold py-3 px-6 sm:py-4 sm:px-8 rounded-full shadow-lg hover:bg-pink-950 hover:shadow-2xl transition duration-300 inline-block"
+          >
+            Inscríbete Ahora
+          </a>
         </Fade>
       </section>
     </main>
