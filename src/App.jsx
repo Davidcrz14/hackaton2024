@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Header from './components/header';
 import Hackathons from './pages/Hackathons';
 import InfoCard from './pages/InfoCard';
+import Retos from './pages/Retos'; // Importa la nueva página
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<MainContent />} /> {/* Ruta principal */}
           <Route path="/hackathons" element={<Hackathons />} /> {/* Ruta para Hackathons */}
           <Route path="/info" element={<InfoCard />} /> {/* Ruta para InfoCard */}
+          <Route path="/retos" element={<Retos />} /> {/* Ruta para Retos */}
         </Routes>
         <Footer />
       </div>

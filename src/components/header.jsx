@@ -1,21 +1,20 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { FaCog, FaHome } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom'; // Importa el hook useLocation
+import { FaBars, FaCog, FaHome } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
-  const location = useLocation(); // Obtén la ubicación actual
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState('home');
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Oculta el enlace de Hackathons
   const links = [
     { id: 'home', icon: FaHome, text: 'Inicio', to: '/' },
-    // { id: 'hackathons', icon: FaUser, text: 'Hackathons', to: '/hackathons' }, // Comentado para ocultar
-    { id: 'info', icon: FaCog, text: 'Más Información', to: '/info' }
+    { id: 'info', icon: FaCog, text: 'Más Información', to: '/info' },
+    { id: 'retos', icon: FaCog, text: 'Forma de Trabajo', to: '/retos' }
   ];
 
   useEffect(() => {
-    // Actualiza el estado activeLink basado en la ubicación actual
     const path = location.pathname;
     const active = links.find(link => link.to === path)?.id || 'home';
     setActiveLink(active);
@@ -32,7 +31,14 @@ const Header = () => {
         >
           POE
         </motion.h1>
-        <nav aria-label="Navegación principal">
+
+        {/* Ícono del menú para dispositivos móviles */}
+        <div className="md:hidden">
+          <FaBars className="text-2xl cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
+        </div>
+
+        {/* Menú principal */}
+        <nav aria-label="Navegación principal" className="hidden md:block">
           <ul className="flex space-x-6">
             {links.map((link) => (
               <motion.li
@@ -55,6 +61,32 @@ const Header = () => {
           </ul>
         </nav>
       </div>
+
+      {/* Menú desplegable en dispositivos móviles */}
+      {isOpen && (
+        <nav aria-label="Navegación móvil" className="md:hidden mt-2">
+          <ul className="flex flex-col space-y-4">
+            {links.map((link) => (
+              <li key={link.id}>
+                <Link
+                  to={link.to}
+                  className={`block py-2 px-4 text-center transition-colors duration-300 ${
+                    activeLink === link.id ? 'text-purple-400' : 'text-gray-300 hover:text-pink-400'
+                  }`}
+                  onClick={() => {
+                    setActiveLink(link.id);
+                    setIsOpen(false); // Cierra el menú al hacer clic
+                  }}
+                >
+                  <link.icon className="inline mr-2" />
+                  {link.text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
       <motion.div
         className="h-1 bg-gradient-to-r from-purple-500 to-pink-500"
         initial={{ scaleX: 0 }}
