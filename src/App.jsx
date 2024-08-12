@@ -4,7 +4,7 @@ import MainContent from './components/body';
 import Footer from './components/footer';
 import Header from './components/header';
 import Hackathons from './pages/Hackathons';
-import InfoCard from './pages/InfoCard'; 
+import InfoCard from './pages/InfoCard';
 
 const App = () => {
   return (
