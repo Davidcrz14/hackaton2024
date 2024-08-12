@@ -1,4 +1,4 @@
-import { Calendar, MapPin, UserPlus } from 'lucide-react';
+import { Calendar, MapPin, MessageCircle, Slack, UserPlus } from 'lucide-react';
 import { Fade, Zoom } from 'react-awesome-reveal';
 import imagen from '../assets/dig.png';
 
@@ -57,6 +57,45 @@ const MainContent = () => {
           </div>
         </Fade>
       </section>
+
+      {/* Sección de Comunidad */}
+      <section className="mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-500 animate-text-gradient">
+            Únete a Nuestra Comunidad
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {[
+              {
+                icon: MessageCircle,
+                text: 'WhatsApp',
+                detail: 'Únete a nuestra comunidad en WhatsApp para estar al día con las últimas noticias y actualizaciones.',
+                link: 'https://chat.whatsapp.com/JZwmI7OapEWBd33TthyFYz'
+              },
+              {
+                icon: Slack,
+                text: 'Slack',
+                detail: 'Conéctate con otros participantes a través de nuestro canal en Slack. Comparte ideas y colabora en tiempo real.',
+                link: 'https://join.slack.com/t/hackatonsdavc/shared_invite/zt-2ogp1nndg-rwzBFvoJUG~~phUvSFNBqw'
+              }
+            ].map((item, index) => (
+              <a
+                key={index}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800/50 backdrop-blur-md p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex flex-col justify-between h-full group animate-fade-in"
+              >
+                <div>
+                  <item.icon className="w-12 h-12 text-green-400 mb-4 group-hover:animate-bounce" />
+                  <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-lime-500">
+                    {item.text}
+                  </h3>
+                </div>
+                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">{item.detail}</p>
+              </a>
+            ))}
+          </div>
+        </section>
 
       {/* Sección de llamada a la acción */}
       <section className="text-center">
